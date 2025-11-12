@@ -19,7 +19,7 @@ class HlubokaKopie {
     std::string popis;
 
 public:
-    HlubokaKopie(int hodnota, const std::string& p);
+    HlubokaKopie(int hodnota, std::string p);
     HlubokaKopie(const HlubokaKopie& other);
     HlubokaKopie(HlubokaKopie&& other) noexcept;
     HlubokaKopie& operator=(const HlubokaKopie& other);
@@ -36,7 +36,7 @@ class SmartKopie {
     std::string popis;
 
 public:
-    SmartKopie(int hodnota, const std::string& p);
+    SmartKopie(int hodnota, std::string p);
     SmartKopie(const SmartKopie& other);
     SmartKopie(SmartKopie&& other) noexcept = default;
     SmartKopie& operator=(const SmartKopie& other);

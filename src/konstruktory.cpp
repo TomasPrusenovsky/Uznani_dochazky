@@ -4,35 +4,35 @@
 
 Clovek::Clovek()
     : jmeno("Neznamy")
-    , vek(0)
+      , vek(0)
 {
     std::cout << "Prazdny konstruktor" << std::endl;
 }
 
 Clovek::Clovek(const std::string& j)
     : jmeno(j)
-    , vek(0)
+      , vek(0)
 {
     std::cout << "Konstruktor se jmenem: " << j << std::endl;
 }
 
 Clovek::Clovek(const std::string& j, int v)
     : jmeno(j)
-    , vek(v)
+      , vek(v)
 {
     std::cout << "Konstruktor: " << j << ", " << v << " let" << std::endl;
 }
 
 Clovek::Clovek(const Clovek& other)
     : jmeno(other.jmeno)
-    , vek(other.vek)
+      , vek(other.vek)
 {
     std::cout << "Kopirovaci konstruktor" << std::endl;
 }
 
 Clovek::Clovek(Clovek&& other) noexcept
     : jmeno(std::move(other.jmeno))
-    , vek(other.vek)
+      , vek(other.vek)
 {
     std::cout << "Move konstruktor" << std::endl;
 }

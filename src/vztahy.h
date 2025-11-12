@@ -1,24 +1,40 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <memory>
 
 class Student {
 public:
     std::string jmeno;
+
     Student(std::string j);
+};
+
+class Ucitel {
+    Student *student;
+
+public:
+    Ucitel();
+
+    void priradStudenta(Student *s);
+
+    void vypisStudenta();
 };
 
 class Kniha {
 public:
     std::string nazev;
+
     Kniha(std::string n);
 };
 
 class Knihovna {
-    std::vector<Kniha*> knihy;
+    std::vector<std::shared_ptr<Kniha> > knihy;
 
 public:
-    void pridejKnihu(Kniha* k);
+    void pridejKnihu(std::shared_ptr<Kniha> k);
+
+    void vypisKnihy() const;
 };
 
 class MotorV {
@@ -31,14 +47,6 @@ class Vuz {
 
 public:
     void start();
-};
-
-class Ucitel {
-    Student* student;
-
-public:
-    void priradStudenta(Student* s);
-    void vypisStudenta();
 };
 
 void ukazkaVztahy();

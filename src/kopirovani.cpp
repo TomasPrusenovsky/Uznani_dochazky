@@ -1,5 +1,6 @@
 #include "kopirovani.h"
 #include <iostream>
+#include <utility> // Pro std::move
 
 MelkaKopie::MelkaKopie(int hodnota)
 {
@@ -28,8 +29,8 @@ int* MelkaKopie::getDataPtr() const
     return data;
 }
 
-HlubokaKopie::HlubokaKopie(int hodnota, const std::string& p)
-    : popis(p)
+HlubokaKopie::HlubokaKopie(int hodnota, std::string p)
+    : popis(std::move(p))
 {
     data = new int(hodnota);
     std::cout << "HlubokaKopie: konstruktor (" << popis << "), data=" << *data << std::endl;
@@ -53,6 +54,10 @@ HlubokaKopie::HlubokaKopie(HlubokaKopie&& other) noexcept
 HlubokaKopie& HlubokaKopie::operator=(const HlubokaKopie& other)
 {
     if (this != &other) {
+        // POZNAMKA: Tato implementace neni "exception-safe".
+        // Pokud by 'new int' selhalo (napr. nedostatek pameti),
+        // puvodni 'data' uz byla smazana a objekt zustane v neplatnem stavu.
+        // Robustnejsi reseni pouziva "copy-and-swap" idiom.
         delete data;
         data = new int(*other.data);
         popis = other.popis + "_prirazeno";
@@ -95,7 +100,7 @@ void HlubokaKopie::vypis() const
     if (data) {
         std::cout << popis << " - Hodnota: " << *data << ", Adresa: " << data << std::endl;
     } else {
-        std::cout << popis << " - Objekt presunout" << std::endl;
+        std::cout << popis << " - Objekt presunut" << std::endl;
     }
 }
 
@@ -104,9 +109,9 @@ int* HlubokaKopie::getDataPtr() const
     return data;
 }
 
-SmartKopie::SmartKopie(int hodnota, const std::string& p)
+SmartKopie::SmartKopie(int hodnota, std::string p)
     : data(std::make_unique<int>(hodnota))
-    , popis(p)
+    , popis(std::move(p))
 {
     std::cout << "SmartKopie: konstruktor (" << popis << ")" << std::endl;
 }
@@ -146,6 +151,9 @@ void ukazkaKopirovani()
     {
         MelkaKopie m1(100);
         m1.vypis();
+        // Poznamka: Kod zde zamerne neukazuje kopii,
+        // protoze by to vedlo k padu programu (double free).
+        // HlubokaKopie ukazuje reseni tohoto problemu.
     }
 
     std::cout << "\n--- Hluboka kopie ---" << std::endl;

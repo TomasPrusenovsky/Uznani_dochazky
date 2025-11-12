@@ -2,9 +2,9 @@
 
 class Tvar {
 public:
-    virtual double obsah();
-    virtual void popis() = 0;
-    virtual ~Tvar() { }
+    virtual double obsah() const = 0;
+    virtual void popis() const = 0;
+    virtual ~Tvar() = default;
 };
 
 class Kruh : public Tvar {
@@ -12,8 +12,8 @@ class Kruh : public Tvar {
 
 public:
     Kruh(double r);
-    double obsah() override;
-    void popis() override;
+    double obsah() const override;
+    void popis() const override;
 };
 
 class Ctverec : public Tvar {
@@ -21,8 +21,8 @@ class Ctverec : public Tvar {
 
 public:
     Ctverec(double s);
-    double obsah() override;
-    void popis() override;
+    double obsah() const override;
+    void popis() const override;
 };
 
 void ukazkaPolymorfismus();
