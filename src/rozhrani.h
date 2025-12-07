@@ -3,14 +3,14 @@
 
 class ITisknutelne {
 public:
-    virtual void tiskni() = 0;
-    virtual ~ITisknutelne() { }
+    virtual void tiskni() const = 0;
+    virtual ~ITisknutelne() = default;
 };
 
 class IUlozitelne {
 public:
-    virtual void uloz() = 0;
-    virtual ~IUlozitelne() { }
+    virtual void uloz() const = 0;
+    virtual ~IUlozitelne() = default;
 };
 
 class Dokument : public ITisknutelne, public IUlozitelne {
@@ -18,8 +18,8 @@ class Dokument : public ITisknutelne, public IUlozitelne {
 
 public:
     Dokument(std::string o);
-    void tiskni() override;
-    void uloz() override;
+    void tiskni() const override;
+    void uloz() const override;
 };
 
 class Obrazek : public ITisknutelne {
@@ -27,7 +27,7 @@ class Obrazek : public ITisknutelne {
 
 public:
     Obrazek(int s, int v);
-    void tiskni() override;
+    void tiskni() const override;
 };
 
 void ukazkaRozhrani();
