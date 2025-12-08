@@ -1,6 +1,6 @@
 # Uznani dochazky
 
-Kolekce ukázkových příkladů objektově orientovaného programování.
+Kolekce ukázkových příkladů objektově orientovaného programování v C++17.
 
 ## Obsah
 
@@ -20,11 +20,22 @@ Kolekce ukázkových příkladů objektově orientovaného programování.
 
 ## Sestavení
 
+### Linux
+
 ```bash
 mkdir build && cd build
 cmake ..
 make
 ./ukazky
+```
+
+### Windows
+
+```powershell
+mkdir build && cd build
+cmake ..
+cmake --build .
+.\Debug\ukazky.exe
 ```
 
 ## Požadavky
