@@ -1,6 +1,6 @@
 # Uznani dochazky
 
-Kolekce ukázkových příkladů objektově orientovaného programování v C++17.
+Kolekce ukázkových příkladů objektově orientovaného programování.
 
 ## Obsah
 
