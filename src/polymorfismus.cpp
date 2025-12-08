@@ -1,10 +1,12 @@
 #include "polymorfismus.h"
 #include <iostream>
-#include <vector>
 #include <memory>
+#include <vector>
 
 Kruh::Kruh(double r)
-    : polomer(r) {}
+    : polomer(r)
+{
+}
 
 double Kruh::obsah() const
 {
@@ -17,7 +19,9 @@ void Kruh::popis() const
 }
 
 Ctverec::Ctverec(double s)
-    : strana(s) {}
+    : strana(s)
+{
+}
 
 double Ctverec::obsah() const
 {
@@ -29,7 +33,7 @@ void Ctverec::popis() const
     std::cout << "Jsem ctverec" << std::endl;
 }
 
-void vypisTvar(const Tvar *t)
+void vypisTvar(const Tvar* t)
 {
     t->popis();
     std::cout << "Obsah: " << t->obsah() << std::endl;
@@ -39,7 +43,7 @@ void ukazkaPolymorfismus()
 {
     std::cout << "\n=== POLYMORFISMUS ===" << std::endl;
 
-    std::vector<std::unique_ptr<Tvar> > tvary;
+    std::vector<std::unique_ptr<Tvar>> tvary;
 
     tvary.push_back(std::make_unique<Kruh>(5));
     tvary.push_back(std::make_unique<Ctverec>(4));
@@ -47,7 +51,7 @@ void ukazkaPolymorfismus()
 
     std::cout << "Prochazeni heterogenni kolekce:" << std::endl;
 
-    for (const auto &tvarPtr : tvary) {
+    for (const auto& tvarPtr : tvary) {
         vypisTvar(tvarPtr.get());
     }
 }

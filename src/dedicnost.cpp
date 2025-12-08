@@ -44,7 +44,7 @@ Kocka::Kocka(const std::string& j, int v, bool d)
     : Zvire(j, v)
     , domaci(d)
 {
-    std::cout << "Vytvorena kocka: " << (domaci ? "domaci" : "divoка") << std::endl;
+    std::cout << "Vytvorena kocka: " << (domaci ? "domaci" : "divokа") << std::endl;
 }
 
 void Kocka::zvuk() const

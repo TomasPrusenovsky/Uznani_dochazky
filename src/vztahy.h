@@ -1,7 +1,7 @@
 #pragma once
+#include <memory>
 #include <string>
 #include <vector>
-#include <memory>
 
 class Student {
 public:
@@ -11,12 +11,12 @@ public:
 };
 
 class Ucitel {
-    Student *student;
+    Student* student;
 
 public:
     Ucitel();
 
-    void priradStudenta(Student *s);
+    void priradStudenta(Student* s);
 
     void vypisStudenta();
 };
@@ -29,7 +29,7 @@ public:
 };
 
 class Knihovna {
-    std::vector<std::shared_ptr<Kniha> > knihy;
+    std::vector<std::shared_ptr<Kniha>> knihy;
 
 public:
     void pridejKnihu(std::shared_ptr<Kniha> k);

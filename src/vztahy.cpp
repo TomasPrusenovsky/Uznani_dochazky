@@ -75,7 +75,6 @@ void ukazkaVztahy()
 
     std::cout << "Kniha k1 stale existuje: " << k1->nazev << std::endl;
 
-
     std::cout << "\n--- Asociace (Ucitel 'zna' Studenta) ---" << std::endl;
     Student s("Jan Novak");
     Ucitel u;

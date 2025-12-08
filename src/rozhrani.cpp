@@ -1,7 +1,7 @@
 #include "rozhrani.h"
 #include <iostream>
-#include <vector>
 #include <utility>
+#include <vector>
 
 Dokument::Dokument(std::string o)
     : obsah(std::move(o))
